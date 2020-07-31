@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 
 const config = require("./config/key");
+
 const mongoose = require("mongoose");
 
 const connect = mongoose
@@ -19,6 +20,7 @@ const connect = mongoose
   .then(() => console.log("MongoDB Connected..."))
   .catch((err) => console.log(err));
 
+
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -26,6 +28,14 @@ app.use(cookieParser());
 
 app.use("/api/users", require("./routes/users"));
 app.use("/uploads", express.static("uploads"));
+
+
+
+app.use('/uploads', express.static('uploads'));
+
+if (process.env.NODE_ENV === "production") {
+
+  app.use(express.static("client/build"));
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
