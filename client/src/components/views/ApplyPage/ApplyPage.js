@@ -1,68 +1,53 @@
 import React, { useState } from "react";
-import { Button, Form, Input } from "antd";
-import FileUpload from "../../utils/FileUpload";
+import { Button, Form, Input} from "antd";
+import { useSelector } from "react-redux";
 import Axios from "axios";
-
+const { TextArea } = Input;
 function ApplyPage(props) {
-  const [Name, setName] = useState("");
-  const [Email, setEmail] = useState("");
-  const [PhoneNumber, setPhoneNumber] = useState(0);
+  const user = useSelector((state) => state.user);
   const [Department, setDepartment] = useState("");
-  const [Sex, setSex] = useState("");
-  const [Files, setFiles] = useState([]);
+  const [Content1,setContent1] = useState("");
+  const [Content2,setContent2] = useState("");
+  const [Content3,setContent3] = useState("");
 
   const Departments = [
-    { key: 1, value: "디자이너" },
-    { key: 2, value: "개발자" },
-    { key: 3, value: "기획자" },
+    { key: 1, value: "개발자" },
+    { key: 2, value: "기획자" },
+    { key: 3, value: "디자이너" },
   ];
-  const Sexs = [
-    { key: 1, value: "남성" },
-    { key: 2, value: "여성" },
-  ];
-
-  const nameChangeHandler = (event) => {
-    setName(event.currentTarget.value);
-  };
-  const emailChangeHandler = (event) => {
-    setEmail(event.currentTarget.value);
-  };
-  const phonenumberChangeHandler = (event) => {
-    setPhoneNumber(event.currentTarget.value);
-  };
-  const sexChangeHandler = (event) => {
-    setSex(event.currentTarget.value);
-  };
   const departmentChangeHandler = (event) => {
     setDepartment(event.currentTarget.value);
   };
-
-  const updateFiles = (newFiles) => {
-    setFiles(newFiles);
+  const content1ChangeHandler = (event) => {
+    setContent1(event.currentTarget.value);
+  };
+  const content2ChangeHandler = (event) => {
+    setContent2(event.currentTarget.value);
+  };
+  const content3ChangeHandler = (event) => {
+    setContent3(event.currentTarget.value);
   };
 
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (!Name || !Email || !PhoneNumber || !Sex || !Department) {
+    if (!Department || !Content1 || !Content2 || !Content3) {
       return alert("모든 값을 넣어주셔야 정상적으로 제출됩니다.");
     }
 
     const body = {
-      name: Name,
-      email: Email,
-      phonenumber: PhoneNumber,
-      sex: Sex,
+      writer: user.userData._id,
       department: Department,
-      files: Files,
+      content1: Content1,
+      content2: Content2,
+      content3: Content3
     };
 
-    console.log("바디", body);
+  
     Axios.post("/api/apply", body).then((response) => {
       if (response.data.success) {
-        console.log("이력서제출", response.data);
         alert("이력서 제출에 성공 했습니다.");
-        props.history.push("/apply/success");
+        props.history.push("/apply/myApply");
       } else {
         alert("이력서 제출에 실패 했습니다.");
       }
@@ -87,27 +72,16 @@ function ApplyPage(props) {
         {/* 그 외 입력폼 */}
         <br />
         <br />
-        <label>이름</label>
-        <Input onChange={nameChangeHandler} value={Name} />
+        <label>1. 지원동기 (300자)</label>
+        <TextArea style= {{height:"150px"}} onChange={content1ChangeHandler} value={Content1}/>
+        <br />
+        <br />        
+        <label>2. 지금까지 가장 기억에 남는 프로젝트 (300자)</label>
+        <TextArea style= {{height:"150px"}} onChange={content2ChangeHandler} value={Content2}/>
         <br />
         <br />
-        <label>이메일</label>
-        <Input onChange={emailChangeHandler} value={Email} />
-        <br />
-        <br />
-        <label>연락처</label>
-        <Input onChange={phonenumberChangeHandler} value={PhoneNumber} />
-        <br />
-        <br />
-        <label>성별</label>
-        <select onChange={sexChangeHandler} value={Sex}>
-          {Sexs.map((item) => (
-            <option key={item.key} value={item.key}>
-              {" "}
-              {item.value}{" "}
-            </option>
-          ))}
-        </select>
+        <label>3. 멋자 (300자)</label>
+        <TextArea style= {{height:"150px"}} onChange={content3ChangeHandler} value={Content3}/>
         <br />
         <br />
         <label>지원직무</label>
@@ -119,15 +93,9 @@ function ApplyPage(props) {
             </option>
           ))}
         </select>
-        <br />
-        <br />
-
-        {/* DropZone */}
-        <label>이력서를 첨부하세요</label>
-        <FileUpload refreshFunction={updateFiles} />
-        <br />
-        <br />
-        <button type="submit">Apply</button>
+        <br/>
+        <br/>
+        <button style={{width:"100px",display:"flex", justifyContent:"center"}} type="submit">Apply</button>
       </Form>
     </div>
   );
