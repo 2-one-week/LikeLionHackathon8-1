@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Timeline } from 'antd';
+import { Timeline } from "antd";
 const { kakao } = window;
 
 const ContactPage = () => {
@@ -24,18 +24,22 @@ const ContactPage = () => {
   });
   return (
     <div>
-      <div style={{display: 'flex', justifyContent: 'center'}}>
-      <Timeline>
-        <br/>
-        <br/>
-      <Timeline.Item><span style={{color : "#F39926"}}>NEXT X LIKELION</span></Timeline.Item>
-      <Timeline.Item>서울특별시 성북구 안암로 145 KU개척마을 206호</Timeline.Item>
-      <Timeline.Item>대표번호 010 - 7641 - 0430</Timeline.Item>
-      <Timeline.Item>이메일 tlsdhfcod@naver.com</Timeline.Item>
-      </Timeline>
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <Timeline>
+          <br />
+          <br />
+          <Timeline.Item>
+            <span style={{ color: "#F39926" }}>NEXT X LIKELION</span>
+          </Timeline.Item>
+          <Timeline.Item>
+            서울특별시 성북구 안암로 145 KU개척마을 206호
+          </Timeline.Item>
+          <Timeline.Item>대표번호 010 - 7641 - 0430</Timeline.Item>
+          <Timeline.Item>이메일 tlsdhfcod@naver.com</Timeline.Item>
+        </Timeline>
       </div>
 
-      <div style={{display: 'flex', justifyContent: 'center'}}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <div id="myMap" style={{ width: "80%", height: "400px" }}></div>
       </div>
     </div>

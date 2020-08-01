@@ -6,7 +6,6 @@ import Message from "./Message";
 import { List, Icon, Avatar } from "antd";
 import Card from "./Card";
 function Chatbot(props) {
-  console.log(props);
   //   const userName = user.userData.name || "user";
   const dispatch = useDispatch();
   const messagesFromRedux = useSelector((state) => state.message.messages);
