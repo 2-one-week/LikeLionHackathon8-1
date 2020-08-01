@@ -156,7 +156,7 @@ function Chatbot(props) {
     <div
       style={{
         height: 700,
-        width: 450,
+        width: "100%",
         border: "3px solid black",
         borderRadius: "7px",
       }}

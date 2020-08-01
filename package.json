@@ -17,6 +17,7 @@
   "license": "ISC",
   "dependencies": {
     "actions-on-google": "^2.6.0",
+    "aos": "2.3.4",
     "bcrypt": "^3.0.6",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.5.0",

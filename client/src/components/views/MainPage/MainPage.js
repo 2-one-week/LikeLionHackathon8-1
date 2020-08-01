@@ -39,7 +39,7 @@ function MainPage() {
       <br />
 
       <div class="justidea">
-        <p>그냥 아이디어가 멋사를 만나,</p>
+        <p> 아이디어가 멋사를 만나,</p>
         <p class="changeWorld">세상을 바꾸다</p>
       </div>
       <br />
