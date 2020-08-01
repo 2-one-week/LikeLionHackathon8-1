@@ -94,42 +94,6 @@ function MainPage() {
               IT서비스 구축을 위한 웹프로그래밍 학습
               <br />
               <br />
-              <strong
-                class="likewhatorange"
-                style={{ display: "inline-block" }}
-              >
-                CALL
-              </strong>
-              <br />
-              010 1234 5678
-              <br />
-              <br />
-              <strong
-                class="likewhatorange"
-                style={{ display: "inline-block" }}
-              >
-                EMAIL
-              </strong>
-              <br />
-              <a class="link" href="sun_117@naver.com" target="_blank">
-                likelion@likelion.co.kr
-              </a>
-              <br />
-              <a class="link" href="advance97@korea.ac.kr" target="_blank">
-                advance97@korea.ac.kr
-              </a>
-              <br />
-              <br />
-              <strong
-                class="likewhatorange"
-                style={{ display: "inline-block" }}
-              >
-                INSTAGRAM
-              </strong>
-              <br />
-              <a class="link" href="https://www.instagram.com/yeonwxoxo/">
-                @likelion
-              </a>
             </span>
           </p>
         </div>
@@ -198,7 +162,7 @@ function MainPage() {
             <div class="likewhatorange" style={{ display: "inline-block" }}>
               EMAIL
             </div>
-            &ensp;sun_117@naver.com&emsp;&emsp;&emsp;&emsp;
+            &ensp;tlsdhfcod@naver.com&emsp;&emsp;&emsp;&emsp;
             <div class="likewhatorange" style={{ display: "inline-block" }}>
               INSTA
             </div>
