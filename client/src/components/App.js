@@ -56,18 +56,18 @@ function App() {
           <Route exact path="/about" component={Auth(AboutPage, null)} />
           <Route exact path="/alumni" component={Auth(AlumniPage, null)} />
           <Route exact path="/main" component={Auth(MainPage, null)} />
-
         </Switch>
       </div>
       <div
         style={{
+          width: "100%",
           height: "100%",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
         }}
       >
-        <div style={{ position: "fixed", left: "90%", top: "80%" }}>
+        <div style={{ position: "fixed", right: "5%", top: "80%" }}>
           <ChatbotModal />
         </div>
       </div>
