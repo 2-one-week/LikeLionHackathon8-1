@@ -12,7 +12,7 @@ function LandingPage() {
           <div class="start">
             <div class="button-1">
               <div class="eff-1"></div>
-              <a href=""> main </a>
+              <a href="/main"> main </a>
             </div>
           </div>
         </span>
