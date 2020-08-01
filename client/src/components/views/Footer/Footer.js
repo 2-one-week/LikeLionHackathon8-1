@@ -13,10 +13,7 @@ function Footer() {
         fontSize: "1rem",
       }}
     >
-      <p>
-        {" "}
-        고려대학교 멋쟁이 사자처럼 공식 홈페이지 <Icon type="smile" />
-      </p>
+      <p> 고려대학교 멋쟁이 사자처럼 공식 홈페이지</p>
     </div>
   );
 }

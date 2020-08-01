@@ -20,21 +20,29 @@
 
 .menu__container .ant-menu-item {
   padding: 0px 5px;
-  color: #f39926;
+  /* color: #f39926; */
   background-color: black;
+  height: 100%;
+}
+
+.menu__container .ant-menu-item a {
+  background-color: black;
+  color: #f39926;
+  padding: 10px 15px;
+  height: 110%;
 }
 
 .menu__container .ant-menu-submenu-title {
   padding: 10px 20px;
-  color: #f39926;
+  /* color: #f39926; */
   background-color: black;
 }
 
-.menu__container .ant-menu-item a,
 .menu__container .ant-menu-submenu-title a {
   background-color: black;
-  color: #f39926;
+  /* color: #f39926; */
   padding: 10px 15px;
+  height: 110%;
 }
 
 .menu__container .ant-menu-horizontal {
@@ -47,12 +55,14 @@
   background-color: black;
   color: #f39926;
   float: left;
+  height: 110%;
 }
 
 .menu__container .menu_rigth {
   background-color: black;
   color: #f39926;
   float: right;
+  height: 110%;
 }
 
 .menu__mobile-button {
@@ -60,9 +70,10 @@
   height: 40px;
   width: 50px;
   padding: 6px;
-  margin-top: 8px;
+  margin-top: 14px;
   display: none !important; /* use of important to overwrite ant-btn */
   background: #f39926;
+  height: 100%;
 }
 
 .menu_drawer .ant-drawer-body {
