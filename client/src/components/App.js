@@ -20,6 +20,7 @@ import AlumniPage from "./views/AlumniPage/AlumniPage";
 import PostEditPage from "./views/PostEditPage/PostEditPage";
 import EditMyPage from "./views/MyPage/EditMyPage";
 import MainPage from "./views/MainPage/MainPage";
+import CurriculumPage from "./views/CurriculumPage/CurriculumPage";
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -53,8 +54,12 @@ function App() {
             path="/post/:postId"
             component={Auth(PostDetialPage, null)}
           />
+          <Route
+            exact
+            path="/curriculum"
+            component={Auth(CurriculumPage, null)}
+          />
           <Route exact path="/about" component={Auth(AboutPage, null)} />
-          <Route exact path="/alumni" component={Auth(AlumniPage, null)} />
           <Route exact path="/main" component={Auth(MainPage, null)} />
         </Switch>
       </div>

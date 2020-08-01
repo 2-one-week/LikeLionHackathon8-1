@@ -54,6 +54,7 @@ export default function ChatbotModal() {
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
+        style={{ width: "70%" }}
       >
         <Chatbot />
       </Modal>

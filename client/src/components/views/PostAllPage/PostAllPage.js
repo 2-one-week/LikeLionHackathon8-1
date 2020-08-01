@@ -22,15 +22,31 @@ function PostAllPage() {
     return (
       <div>
         <a href={`/post/${post._id}`}>
-          <h3>{post.title}</h3>
-          <h4>'{post.writer.name}' 님이 올린 게시글</h4>
+          <h3
+            style={{
+              color: "#F39926",
+              fontWeight: "bold",
+              fontSize: "22px",
+              marginTop: "25px",
+            }}
+          >
+            {post.title}
+          </h3>
+          <h4 style={{ color: "#999999", fontWeight: "1px" }}>
+            '{post.writer.name}' 님이 올린 게시글
+          </h4>
         </a>
       </div>
     );
   });
 
   return (
-    <div style={{ width: "85%", margin: "3rem auto" }}>
+    <div
+      style={{
+        width: "85%",
+        margin: "3rem auto",
+      }}
+    >
       <Title level={2}> 전체게시글 </Title>
       <hr />
 
