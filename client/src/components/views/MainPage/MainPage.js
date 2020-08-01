@@ -162,7 +162,7 @@ function MainPage() {
             <div class="likewhatorange" style={{ display: "inline-block" }}>
               EMAIL
             </div>
-            &ensp;tlsdhfcod@naver.com&emsp;&emsp;&emsp;&emsp;
+            &ensp;sun_117@naver.com&emsp;&emsp;&emsp;&emsp;
             <div class="likewhatorange" style={{ display: "inline-block" }}>
               INSTA
             </div>
