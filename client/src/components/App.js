@@ -19,7 +19,7 @@ import AboutPage from "./views/AboutPage/AboutPage";
 import AlumniPage from "./views/AlumniPage/AlumniPage";
 import PostEditPage from "./views/PostEditPage/PostEditPage";
 import EditMyPage from "./views/MyPage/EditMyPage";
-
+import MainPage from "./views/MainPage/MainPage";
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -55,6 +55,8 @@ function App() {
           />
           <Route exact path="/about" component={Auth(AboutPage, null)} />
           <Route exact path="/alumni" component={Auth(AlumniPage, null)} />
+          <Route exact path="/main" component={Auth(MainPage, null)} />
+
         </Switch>
       </div>
       <div

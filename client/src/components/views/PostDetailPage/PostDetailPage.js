@@ -12,6 +12,7 @@ function PostDetailPage(props) {
   useEffect(() => {
     Axios.post("/api/post/getDetail", variable).then((response) => {
       if (response.data.success) {
+        console.log(response.data);
         setPostDetail(response.data.postDetail);
       } else {
         alert("게시글 정보를 가져오는데에 실패했습니다.");
@@ -34,9 +35,11 @@ function PostDetailPage(props) {
         <h5>{PostDetail.description}</h5>
         <button onClick={deleteHandler}>글 삭제하기</button>
         <button onClick={editHandler}>글 수정하기</button>
+
         {PostDetail.files.map((item, index) => (
           <div key={index}>
-            <img src={item} />
+            <img url={item} alt="zz" />
+            {/* <img src={`../../../../../${item}`} /> */}
           </div>
         ))}
       </div>
