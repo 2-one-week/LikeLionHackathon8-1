@@ -31,7 +31,7 @@ function App() {
           <Route exact path="/apply" component={Auth(ApplyPage, true)} />
           <Route
             exact
-            path="/apply/success"
+            path="/apply/myApply"
             component={Auth(ApplySuccessPage, true)}
           />
           <Route exact path="/mypage" component={Auth(MyPage, true)} />
