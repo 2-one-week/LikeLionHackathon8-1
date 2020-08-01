@@ -7,7 +7,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
-
+import ChatbotModal from "./views/Chatbot/ChatbotModal"
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -23,8 +23,15 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
         </Switch>
       </div>
+      <div style ={{ height:"100%", display:"flex", justifyContent:"center", alignItems :"center"}}>
+        <div style={{ position: "fixed", left: "90%", top: "80%"}}>
+          <ChatbotModal />
+        </div>
+      </div>
       <Footer />
+      
     </Suspense>
+
   );
 }
 
