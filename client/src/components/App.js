@@ -36,7 +36,7 @@ function App() {
           <Route exact path="/apply" component={Auth(ApplyPage, true)} />
           <Route
             exact
-            path="/apply/success"
+            path="/apply/myApply"
             component={Auth(ApplySuccessPage, true)}
           />
           <Route exact path="/mypage" component={Auth(MyPage, true)} />
@@ -56,6 +56,7 @@ function App() {
           <Route exact path="/about" component={Auth(AboutPage, null)} />
           <Route exact path="/alumni" component={Auth(AlumniPage, null)} />
           <Route exact path="/main" component={Auth(MainPage, null)} />
+
         </Switch>
       </div>
       <div

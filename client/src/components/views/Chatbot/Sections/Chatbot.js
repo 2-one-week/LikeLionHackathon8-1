@@ -1,173 +1,185 @@
-import React, { useEffect } from 'react';
-import Axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-import { saveMessage } from '../../../../_actions/message_actions';
-import Message from './Message';
-import { List, Icon, Avatar } from 'antd';
+import React, { useEffect } from "react";
+import Axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { saveMessage } from "../../../../_actions/message_actions";
+import Message from "./Message";
+import { List, Icon, Avatar } from "antd";
 import Card from "./Card";
-function Chatbot() {
-    const dispatch = useDispatch();
-    const messagesFromRedux = useSelector(state => state.message.messages)
-    
-    useEffect(() => {
+function Chatbot(props) {
+  console.log(props);
+  //   const userName = user.userData.name || "user";
+  const dispatch = useDispatch();
+  const messagesFromRedux = useSelector((state) => state.message.messages);
 
-        eventQuery('welcomeToMyWebsite')
-    }, [])
+  useEffect(() => {
+    eventQuery("welcomeToMyWebsite");
+  }, []);
 
-    const textQuery = async (text) => {
+  const textQuery = async (text) => {
+    //  First  Need to  take care of the message I sent
+    let conversation = {
+      who: "userName",
+      content: {
+        text: {
+          text: text,
+        },
+      },
+    };
 
-        //  First  Need to  take care of the message I sent     
+    dispatch(saveMessage(conversation));
+    // console.log('text I sent', conversation)
+
+    // We need to take care of the message Chatbot sent
+    const textQueryVariables = {
+      text,
+    };
+    try {
+      //I will send request to the textQuery ROUTE
+      const response = await Axios.post(
+        "/api/dialogflow/textQuery",
+        textQueryVariables
+      );
+
+      for (let content of response.data.fulfillmentMessages) {
+        conversation = {
+          who: "bot",
+          content: content,
+        };
+
+        dispatch(saveMessage(conversation));
+      }
+    } catch (error) {
+      conversation = {
+        who: "bot",
+        content: {
+          text: {
+            text: " Error just occured, please check the problem",
+          },
+        },
+      };
+
+      dispatch(saveMessage(conversation));
+    }
+  };
+
+  const eventQuery = async (event) => {
+    // We need to take care of the message Chatbot sent
+    const eventQueryVariables = {
+      event,
+    };
+    try {
+      //I will send request to the textQuery ROUTE
+      const response = await Axios.post(
+        "/api/dialogflow/eventQuery",
+        eventQueryVariables
+      );
+      for (let content of response.data.fulfillmentMessages) {
         let conversation = {
-            who: 'user',
-            content: {
-                text: {
-                    text: text
-                }
-            }
-        }
+          who: "bot",
+          content: content,
+        };
 
-        dispatch(saveMessage(conversation))
-        // console.log('text I sent', conversation)
-
-        // We need to take care of the message Chatbot sent 
-        const textQueryVariables = {
-            text
-        }
-        try {
-            //I will send request to the textQuery ROUTE 
-            const response = await Axios.post('/api/dialogflow/textQuery', textQueryVariables)
-
-            for (let content of response.data.fulfillmentMessages) {
-
-                conversation = {
-                    who: 'bot',
-                    content: content
-                }
-
-                dispatch(saveMessage(conversation))
-            }
-
-        } catch (error) {
-            conversation = {
-                who: 'bot',
-                content: {
-                    text: {
-                        text: " Error just occured, please check the problem"
-                    }
-                }
-            }
-
-            dispatch(saveMessage(conversation))
-
-        }
+        dispatch(saveMessage(conversation));
+      }
+    } catch (error) {
+      let conversation = {
+        who: "bot",
+        content: {
+          text: {
+            text: " Error just occured, please check the problem",
+          },
+        },
+      };
+      dispatch(saveMessage(conversation));
     }
+  };
 
-    const eventQuery = async (event) => {
-        // We need to take care of the message Chatbot sent 
-        const eventQueryVariables = {
-            event
-        }
-        try {
-            //I will send request to the textQuery ROUTE 
-            const response = await Axios.post('/api/dialogflow/eventQuery', eventQueryVariables)
-            for (let content of response.data.fulfillmentMessages) {
+  const keyPressHanlder = (e) => {
+    if (e.key === "Enter") {
+      if (!e.target.value) {
+        return alert("you need to type somthing first");
+      }
 
-                let conversation = {
-                    who: 'bot',
-                    content: content
-                }
+      //we will send request to text query route
+      textQuery(e.target.value);
 
-                dispatch(saveMessage(conversation))
-            }
-
-        } catch (error) {
-            let conversation = {
-                who: 'bot',
-                content: {
-                    text: {
-                        text: " Error just occured, please check the problem"
-                    }
-                }
-            }
-            dispatch(saveMessage(conversation))
-        }
+      e.target.value = "";
     }
+  };
 
-    const keyPressHanlder = (e) => {
-        if (e.key === "Enter") {
-            if (!e.target.value) {
-                return alert('you need to type somthing first')
-            }
+  const renderCards = (cards) => {
+    return cards.map((card, i) => <Card key={i} cardInfo={card.structValue} />);
+  };
 
-            //we will send request to text query route 
-            textQuery(e.target.value)
+  const renderOneMessage = (message, i) => {
+    console.log("message", message);
 
-            e.target.value = "";
-        }
-    }
+    // we need to give some condition here to separate message kinds
 
-    const renderCards = (cards) => {
-        return cards.map((card,i) => <Card key={i} cardInfo={card.structValue} />)
-    }
+    // template for normal text
+    if (message.content && message.content.text && message.content.text.text) {
+      return (
+        <Message key={i} who={message.who} text={message.content.text.text} />
+      );
+    } else if (message.content && message.content.payload.fields.card) {
+      const AvatarSrc =
+        message.who === "bot" ? <Icon type="robot" /> : <Icon type="smile" />;
 
-    const renderOneMessage = (message, i) => {
-        console.log('message', message)
-
-        // we need to give some condition here to separate message kinds 
-
-        // template for normal text 
-        if (message.content && message.content.text && message.content.text.text) {
-            return <Message key={i} who={message.who} text={message.content.text.text} />
-        } else if (message.content && message.content.payload.fields.card) {
-            const AvatarSrc = message.who === 'bot' ? <Icon type="robot" /> : <Icon type="smile" />
-
-            return <div>
-                <List.Item style={{ padding: '1rem' }}>
-                    <List.Item.Meta
-                        avatar={<Avatar icon={AvatarSrc} />}
-                        title={message.who}
-                        description={renderCards(message.content.payload.fields.card.listValue.values)}
-                    />
-                </List.Item>
-            </div>
-        }
-
-        // template for card message 
-
-    }
-
-    const renderMessage = (returnedMessages) => {
-
-        if (returnedMessages) {
-            return returnedMessages.map((message, i) => {
-                return renderOneMessage(message, i);
-            })
-        } else {
-            return null;
-        }
-    }
-
-    return (
-        <div style={{
-            height: 700, width: 450,
-            border: '3px solid black', borderRadius: '7px'
-        }}>
-            <div style={{ height: 644, width: '100%', overflow: 'auto' }}>
-
-                {renderMessage(messagesFromRedux)}
-
-            </div>
-            <input
-                style={{
-                    margin: 0, width: '100%', height: 50,
-                    borderRadius: '4px', padding: '5px', fontSize: '1rem'
-                }}
-                placeholder="Send a message..."
-                onKeyPress={keyPressHanlder}
-                type="text"
+      return (
+        <div>
+          <List.Item style={{ padding: "1rem" }}>
+            <List.Item.Meta
+              avatar={<Avatar icon={AvatarSrc} />}
+              title={message.who}
+              description={renderCards(
+                message.content.payload.fields.card.listValue.values
+              )}
             />
+          </List.Item>
         </div>
-    )
+      );
+    }
+
+    // template for card message
+  };
+
+  const renderMessage = (returnedMessages) => {
+    if (returnedMessages) {
+      return returnedMessages.map((message, i) => {
+        return renderOneMessage(message, i);
+      });
+    } else {
+      return null;
+    }
+  };
+
+  return (
+    <div
+      style={{
+        height: 700,
+        width: 450,
+        border: "3px solid black",
+        borderRadius: "7px",
+      }}
+    >
+      <div style={{ height: 644, width: "100%", overflow: "auto" }}>
+        {renderMessage(messagesFromRedux)}
+      </div>
+      <input
+        style={{
+          margin: 0,
+          width: "100%",
+          height: 50,
+          borderRadius: "4px",
+          padding: "5px",
+          fontSize: "1rem",
+        }}
+        placeholder="Send a message..."
+        onKeyPress={keyPressHanlder}
+        type="text"
+      />
+    </div>
+  );
 }
 
 export default Chatbot;
