@@ -23,7 +23,7 @@ function PostAllPage() {
       <div>
         <a href={`/post/${post._id}`}>
           <h3>{post.title}</h3>
-          <h4>{post.writer.name}</h4>
+          <h4>'{post.writer.name}' 님이 올린 게시글</h4>
         </a>
       </div>
     );
