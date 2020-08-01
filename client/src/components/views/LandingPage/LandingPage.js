@@ -1,14 +1,13 @@
 import React from "react";
 
 function LandingPage() {
+  const imageSrc =
+    "https://postfiles.pstatic.net/MjAyMDA4MDFfMjgw/MDAxNTk2MjQ4ODkyNTU1.TXzkDOzlkNOlDHkeLqgpPkHG_k-GNDYWFbE1yg8XsA0g.CQbiAItcPQ0Md4jK-ZVXf3JdRbz4xico0ZjdF3zNRvgg.PNG.sun_117/likelionwhite.png?type=w966";
   return (
     <div class="body">
       <div class="slide-wrap">
         <span class="likelionLogo">
-          <img
-            src="https://postfiles.pstatic.net/MjAyMDA4MDFfMjY5/MDAxNTk2MjUxMTc0Njky.vLN6aKRdEhJAdBlG6vJAtuhFGf1OLcPQPz7fe6fEQCEg.25OqwFjfBE_aSk-sjfLNSUDJ9WJQqOkunDVUIYJXBT8g.PNG.sun_117/likelionwhite%EC%88%98%EC%A0%95-01.png?type=w966"
-            alt="testimage"
-          />
+          <img src={imageSrc} alt="testimage" />
           <div class="start">
             <div class="button-1">
               <div class="eff-1"></div>
