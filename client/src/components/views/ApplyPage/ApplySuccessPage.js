@@ -1,48 +1,79 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { Button, Form, Input} from "antd";
 import Axios from "axios";
+const { TextArea } = Input;
 
-function ApplySuccessPage() {
-  //   const [Apply, setApply] = useState([]);
+function MyApplyPage(props) {
+  const [Department, setDepartment] = useState("");
+  const [Content1,setContent1] = useState("");
+  const [Content2,setContent2] = useState("");
+  const [Content3,setContent3] = useState("");
+  const [isContent, setIsContent] = useState(false);
 
-  //   const applyVariable = {};
 
-  //   useEffect(() => {
-  //     Axios.post("/getapply", applyVariable).then((response) => {
-  //       if (response.data.success) {
-  //         console.log(response.data);
-  //       } else {
-  //         alert("이력서 정보를 불러오는데 실패했습니다.");
-  //       }
-  //     });
-  //   });
 
+    Axios.get("/api/apply").then((response) => {
+      if (response.data.success) {
+        console.log("이력서받기", response.data.contents);
+        if(response.data.contents[0].department == 1){
+          setDepartment("개발자");
+        }
+        else if(response.data.contents[0].department == 2 ){
+          setDepartment("기획자");
+        }else if(response.data.contents[0].department == 3 ){
+          setDepartment("디자이너");
+        }
+        setContent1(response.data.contents[0].content1);
+        setContent2(response.data.contents[0].content2);
+        setContent3(response.data.contents[0].content3);
+        setIsContent(true);
+      } else {
+        alert("이력서 제출에 실패 했습니다.");
+      }
+    });
+if(!isContent){
+  props.history.push("/apply");
+  return <div>…loading</div>;
+}
+else{
   return (
-    <div>
-      <h1 style={{ textAlign: "center" }}>
-        이력서가 정상적으로 제출되었습니다.
-      </h1>
-      <div>
-        <h3>
-          이름 <span>이름</span>
-        </h3>
-        <h3>
-          이메일 <span>이메일</span>
-        </h3>
-        <h3>
-          연락처 <span>연락처</span>
-        </h3>
-        <h3>
-          성별 <span>성별</span>
-        </h3>
-        <h3>
-          지원부서 <span>지원부서</span>
-        </h3>
-        <h3>
-          이력서 <span>다운로드</span>
-        </h3>
+    <div
+      style={{
+        maxWidth: "700px",
+        margin: "2rem auto",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+      }}
+    >
+      <div style={{ textAlign: "center", marginBottom: "2rem" }}>
+        <h2> 지원서 확인하기</h2>
       </div>
+
+      <Form>
+        {/* 그 외 입력폼 */}
+        <br />
+        <br />
+        <label>1. 지원동기 (300자)</label>
+        <TextArea style= {{height:"150px"}} value={Content1}/>
+        <br />
+        <br />        
+        <label>2. 지금까지 가장 기억에 남는 프로젝트 (300자)</label>
+        <TextArea style= {{height:"150px"}}  value={Content2}/>
+        <br />
+        <br />
+        <label>3. 멋자 (300자)</label>
+        <TextArea style= {{height:"150px"}} value={Content3}/>
+        <br />
+        <br />
+        <label>지원직무 </label>
+        <span style={{fontWeight:"bold"}}>{Department}</span>
+        <br/>
+        <br/>
+        <button style={{width: "100px",display:"flex", justifyContent:"center"}} type="submit">Edit</button>
+      </Form>
     </div>
   );
 }
-
-export default ApplySuccessPage;
+}
+export default MyApplyPage;

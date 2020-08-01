@@ -20,9 +20,11 @@ function LeftMenu(props) {
           <a href="/post/upload">Upload</a>
         </Menu.Item>
       </SubMenu>
-      <Menu.Item>
-        <a href="/apply">Apply</a>
-      </Menu.Item>
+
+      <SubMenu title={<span>Apply</span>}>
+          <Menu.Item key="setting:5"><a href="/apply">Apply</a></Menu.Item>
+          <Menu.Item key="setting:6"><a href="/apply/myApply">My Apply</a></Menu.Item>
+      </SubMenu>
       <Menu.Item>
         <a href="/contact">Contact</a>
       </Menu.Item>
