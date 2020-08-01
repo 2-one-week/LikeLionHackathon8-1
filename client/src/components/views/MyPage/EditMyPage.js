@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 import { Typography, Button } from "antd";
 import { LIKELION_IMG } from "../../Config";
 
 const { Title } = Typography;
 
-function MyPage({ user }) {
+function EditMyPage({ user }) {
   let { cord, department, email, image, isAuth, name } = user.userData || {};
 
   if (cord) {
     cord = `멋쟁이 사자처럼 ${cord}기`;
   }
   image = `${image}`;
-
   return (
     <div
       style={{
@@ -77,4 +76,4 @@ function MyPage({ user }) {
   );
 }
 
-export default MyPage;
+export default EditMyPage;

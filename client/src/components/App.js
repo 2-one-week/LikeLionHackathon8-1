@@ -14,6 +14,7 @@ import ContactPage from "./views/ContactPage/ContactPage";
 import PostUploadPage from "./views/PostUploadPage/PostUploadPage";
 import PostAllPage from "./views/PostAllPage/PostAllPage";
 import PostDetialPage from "./views/PostDetailPage/PostDetailPage";
+import EditMyPage from "./views/MyPage/EditMyPage";
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -35,6 +36,7 @@ function App() {
             component={Auth(ApplySuccessPage, true)}
           />
           <Route exact path="/mypage" component={Auth(MyPage, true)} />
+          <Route exact path="/editmypage" component={Auth(EditMyPage, true)} />
           <Route exact path="/contact" component={Auth(ContactPage, null)} />
           <Route
             exact
