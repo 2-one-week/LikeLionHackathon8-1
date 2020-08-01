@@ -17,8 +17,9 @@ const postSchema = mongoose.Schema(
     privacy: {
       type: Number,
     },
-    filepath: {
-      type: String,
+    files: {
+      type: Array,
+      default: [],
     },
   },
   { timestamps: true }

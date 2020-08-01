@@ -1,3 +1,83 @@
+.body {
+  font-family: "Roboto", sans-serif;
+  background-color: #000000;
+}
+
+.likelionLogo img {
+  position: absolute;
+  top: 25%;
+  left: 33%;
+  width: 35%;
+  height: auto;
+  z-index: 1;
+  opacity: 80%;
+}
+
+.KoreaUniversity {
+  color: white;
+  z-index: 1;
+  position: absolute;
+  font-size: 500%;
+  font-weight: bold;
+}
+/* start버튼 시작 */
+.start {
+  /* text-align: center; */
+  position: absolute;
+  top: 80%;
+  left: 25%;
+  right: 25%;
+  z-index: 1;
+}
+
+.button-1 {
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  border: 2px solid #f39926;
+
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.button-1 a {
+  text-align: center;
+  font-family: arial;
+  font-size: 25px;
+  color: #f39926;
+  text-decoration: none;
+  line-height: 50px;
+  transition: all 0.5s ease;
+  z-index: 2;
+  position: relative;
+}
+.eff-1 {
+  text-align: center;
+  width: 200px;
+  height: 60px;
+  top: -2px;
+  right: -2000px;
+  background: #f39926;
+  position: absolute;
+  transition: all 0.5s ease;
+  z-index: 1;
+}
+.button-1:hover .eff-1 {
+  text-align: center;
+  right: 0;
+}
+.button-1:hover a {
+  text-align: center;
+  color: #fff;
+}
+
+/* start버튼 끝 */
+
+/* 슬라이더부분 */
 ul {
   list-style: none outside none;
   padding-left: 0;
@@ -21,18 +101,34 @@ ul {
 }
 .slide-content {
   margin: 0;
+  opacity: 30%;
   /* width: 1600px;
-    height:900px; */
+  height:900px; */
 }
+
+footer {
+  color: white;
+  text-align: center;
+  margin-top: 5%;
+  margin-bottom: 3%;
+  opacity: 70%;
+}
+
 .item1 {
-  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMjY5/MDAxNTk2MjQ1NjQxOTk5.Tk8KMBB3KxPCc4GEtfYTCbWixX7zd5h6l5qPjifYik8g.Yaa-z0a3OSkOS_gwVoQ3Wy62v10kYfAcG6A03SYGaXEg.JPEG.tojay24/1_.jpg?type=w966");
+  background-image: url("https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80");
 }
 .item2 {
-  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMjk4/MDAxNTk2MjQ1NjQxOTA2.XXYSr86VMoxXxMlO7hCU3CEHP0lhL6h3GItP2U9JzsYg.wZ7gdWGb5Dca350sjOzyXMZucZSRXonPFZjZCcTaA14g.JPEG.tojay24/2.jpg?type=w966");
+  background-image: url("https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/2YH6/image/Phllta1cL10Y0e8juGSuKCVXy5c.jpg");
 }
 .item3 {
-  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMTQ4/MDAxNTk2MjQ1NjQxOTg1.Nsa_L9QEOdEel2cOyTfSBsFVFDo9JRdpvttd7zv8STUg.k1ipzg6DXkWa6wqeUK-q3P02QmMFDhnJ2V4xmmDxfLcg.JPEG.tojay24/3.jpg?type=w966");
+  background-image: url("https://images.unsplash.com/photo-1543682704-15adeb008ac4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=941&q=80");
 }
 .item4 {
-  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMjEy/MDAxNTk2MjQ1NjQxODY2.i08y6Lvij_8fbNQ0Ql7J_B_UU4lcnYmSG3PVsRMwffgg.hHRRrdHERC5xViLeGSM-M4Bx_Wi6UPmjzvzBRJp1ungg.JPEG.tojay24/4.jpg?type=w966");
+  background-image: url("https://lh4.googleusercontent.com/cNhY0zM3LNMSuuszbpguuW2d_zFp_9l5hcf0Vz997W9t8NFSvoH7QsMYju2viWjUCpK8nMVM3km5SZa1aWcy80tUnZqiHeLpKyLmbl7HV9yj3cAvBWUxaTBVxiUPH3S9c7LbUPhm");
+}
+.item5 {
+  background-image: url("https://img1.daumcdn.net/thumb/R1280x0.fjpg/?fname=http://t1.daumcdn.net/brunch/service/user/2YH6/image/Phllta1cL10Y0e8juGSuKCVXy5c.jpg");
+}
+.item6 {
+  background-image: url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80");
 }

@@ -14,7 +14,10 @@ import ContactPage from "./views/ContactPage/ContactPage";
 import PostUploadPage from "./views/PostUploadPage/PostUploadPage";
 import PostAllPage from "./views/PostAllPage/PostAllPage";
 import PostDetialPage from "./views/PostDetailPage/PostDetailPage";
-
+import AboutPage from "./views/AboutPage/AboutPage";
+import AlumniPage from "./views/AlumniPage/AlumniPage";
+import AIPage from "./views/AIPage/AIPage";
+import PostEditPage from "./views/PostEditPage/PostEditPage";
 //null   Anyone Can go inside
 //true   only logged in user can go inside
 //false  logged in user can't go inside
@@ -46,6 +49,10 @@ function App() {
             exact
             path="/post/:postId"
             component={Auth(PostDetialPage, null)}
+          />
+          <Route exact path="/about" component={Auth(AboutPage, null)} />
+          <Route exact path="/alumni" component={Auth(AlumniPage, null)} />
+          <Route exact path="/ai" component={Auth(AIPage, null)} />
           />
         </Switch>
       </div>
