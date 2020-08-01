@@ -1,0 +1,38 @@
+ul {
+  list-style: none outside none;
+  padding-left: 0;
+  padding-right: 0;
+  margin: 0;
+}
+.slide-content .slide-content {
+  margin-bottom: 0px;
+}
+.slider li {
+  text-align: center;
+  color: transparent;
+  background-size: cover;
+  background-position: center;
+}
+.slider h3 {
+  margin: 0;
+  /* padding: 100px 0; */
+  width: 1920px;
+  height: 1080px;
+}
+.slide-content {
+  margin: 0;
+  /* width: 1600px;
+    height:900px; */
+}
+.item1 {
+  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMjY5/MDAxNTk2MjQ1NjQxOTk5.Tk8KMBB3KxPCc4GEtfYTCbWixX7zd5h6l5qPjifYik8g.Yaa-z0a3OSkOS_gwVoQ3Wy62v10kYfAcG6A03SYGaXEg.JPEG.tojay24/1_.jpg?type=w966");
+}
+.item2 {
+  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMjk4/MDAxNTk2MjQ1NjQxOTA2.XXYSr86VMoxXxMlO7hCU3CEHP0lhL6h3GItP2U9JzsYg.wZ7gdWGb5Dca350sjOzyXMZucZSRXonPFZjZCcTaA14g.JPEG.tojay24/2.jpg?type=w966");
+}
+.item3 {
+  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMTQ4/MDAxNTk2MjQ1NjQxOTg1.Nsa_L9QEOdEel2cOyTfSBsFVFDo9JRdpvttd7zv8STUg.k1ipzg6DXkWa6wqeUK-q3P02QmMFDhnJ2V4xmmDxfLcg.JPEG.tojay24/3.jpg?type=w966");
+}
+.item4 {
+  background-image: url("https://postfiles.pstatic.net/MjAyMDA4MDFfMjEy/MDAxNTk2MjQ1NjQxODY2.i08y6Lvij_8fbNQ0Ql7J_B_UU4lcnYmSG3PVsRMwffgg.hHRRrdHERC5xViLeGSM-M4Bx_Wi6UPmjzvzBRJp1ungg.JPEG.tojay24/4.jpg?type=w966");
+}
